@@ -1,5 +1,5 @@
 
-# lab-suite
+# examine-instance
 
 [![Build Status](https://travis-ci.org/midknight41/examine-instance.svg?branch=master)](https://travis-ci.org/midknight41/examine-instance) 
 
