@@ -46,5 +46,4 @@ const result = examine(instance);
 }
 
 */
-
 ```
