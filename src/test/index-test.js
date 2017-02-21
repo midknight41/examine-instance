@@ -221,8 +221,7 @@ group("The examine() function", () => {
 
     const result = examine(obj);
 
-    console.log(result);
-
+    expect(result).to.be.an.object();
     return done();
 
   });
