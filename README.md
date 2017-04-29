@@ -1,6 +1,8 @@
 
 # examine-instance
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/midknight41/examine-instance.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/midknight41/examine-instance.svg?branch=master)](https://travis-ci.org/midknight41/examine-instance) 
 
 **examine-instance** inspects an object and its prototype and catalogues the properties and methods.
