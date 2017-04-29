@@ -1,6 +1,6 @@
 {
   "name": "examine-instance",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Inspects an object and its prototype and catalogues the properties and methods.",
   "main": "./dist/lib/index.js",
   "scripts": {
