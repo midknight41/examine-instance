@@ -66,6 +66,10 @@ class MyClass {
   method1(value) {
     return value;
   }
+
+  method2_(value) {
+    return value;
+  }
 }
 
 group("The examine() function", () => {
@@ -74,15 +78,49 @@ group("The examine() function", () => {
 
     const obj = {
       method1: () => { return; },
-      method2: () => { return; },
-      method3: () => { return; }
+      method2_: () => { return; },
+      _method3: () => { return; }
     };
 
     const result = examine(obj);
 
     expect(result).to.be.an.object();
     expect(result.methods).to.have.length(3);
-    expect(result.methods).to.contain(["method1", "method2", "method3"]);
+    expect(result.methods).to.contain(["method1", "method2_", "_method3"]);
+
+    return done();
+
+  });
+
+  lab.test("can detect a private method on the instance of the object", done => {
+
+    const obj = {
+      method1_: () => { return; },
+      _method2: () => { return; }
+    };
+
+    const result = examine(obj);
+
+    expect(result).to.be.an.object();
+    expect(result.privateMethods).to.have.length(2);
+    expect(result.privateMethods).to.contain(["method1_", "_method2"]);
+
+    return done();
+
+  });
+
+  lab.test("can detect a public method on the instance of the object", done => {
+
+    const obj = {
+      method1: () => { return; },
+      method2: () => { return; }
+    };
+
+    const result = examine(obj);
+
+    expect(result).to.be.an.object();
+    expect(result.publicMethods).to.have.length(2);
+    expect(result.publicMethods).to.contain(["method1", "method2"]);
 
     return done();
 
