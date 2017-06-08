@@ -3,9 +3,10 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/midknight41/examine-instance.svg)](https://greenkeeper.io/)
 
-[![Build Status](https://travis-ci.org/midknight41/examine-instance.svg?branch=master)](https://travis-ci.org/midknight41/examine-instance) 
+[![Build Status](https://travis-ci.org/midknight41/examine-instance.svg?branch=master)](https://travis-ci.org/midknight41/examine-instance)
 
 **examine-instance** inspects an object and its prototype and catalogues the properties and methods.
+Categorises methods as private if they are prefixed or suffixed by an underscore, otherwise marks as public.
 
 ## Installation
 
@@ -33,14 +34,20 @@ class MyClass {
   method1(value) {
     return value;
   }
+
+  method2_(value) {
+    return value;
+  }
 }
 
 const instance = new MyClass();
 const result = examine(instance);
 
 /*
-{ 
-  methods: [ 'method1' ],
+{
+  methods: [ 'method1', 'method2_' ],
+  privateMethods: [ 'method2_' ],
+  publicMethods: [ 'method1' ],
   attributes: [ '_property1', '_isGood' ],
   readOnly: [ 'isGood' ],
   readWrite: [ 'property1' ],

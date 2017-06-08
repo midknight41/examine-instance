@@ -2,6 +2,8 @@ export default function examine(target) {
 
   const examination = {
     methods: [],
+    privateMethods: [],
+    publicMethods: [],
     attributes: [],
     readOnly: [],
     readWrite: [],
@@ -11,6 +13,8 @@ export default function examine(target) {
   const propNames = Object.getOwnPropertyNames(target);
   const proto = Object.getPrototypeOf(target);
   const protoPropNames = Object.getOwnPropertyNames(proto);
+
+  const privateNameExp = /^_|_$/;
 
   // examine the instance
   for (const value of propNames) {
@@ -26,6 +30,14 @@ export default function examine(target) {
     if (descriptor.value !== undefined && typeof descriptor.value === "function") {
 
       examination.methods.push(value);
+
+      const isPrivateMethod = privateNameExp.exec(value);
+
+      if (isPrivateMethod) {
+        examination.privateMethods.push(value);
+      } else {
+        examination.publicMethods.push(value);
+      }
       continue;
     }
 
