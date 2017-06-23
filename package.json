@@ -27,6 +27,10 @@
     "reflection"
   ],
   "author": "Chad Macey",
+   "contributors": [
+    "Chad Macey <chad_macey@hotmail.com>",
+    "Jack MacDonald <jack.macdonald0@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/midknight41/examine-instance/issues"
