@@ -170,6 +170,34 @@ group("The examine() function", () => {
 
   });
 
+  lab.test("can detect a private method on the instance of the class", done => {
+
+    const obj = new MyClass();
+
+    const result = examine(obj);
+
+    expect(result).to.be.an.object();
+    expect(result.privateMethods).to.have.length(1);
+    expect(result.privateMethods).to.contain(["method2_"]);
+
+    return done();
+
+  });
+
+  lab.test("can detect a public method on the instance of the class", done => {
+
+    const obj = new MyClass();
+
+    const result = examine(obj);
+
+    expect(result).to.be.an.object();
+    expect(result.publicMethods).to.have.length(1);
+    expect(result.publicMethods).to.contain(["method1"]);
+
+    return done();
+
+  });
+
   lab.test("can detect a raw attribute on the prototype of the object", done => {
 
     const Class = (function () {
