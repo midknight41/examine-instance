@@ -88,6 +88,14 @@ export default function examine(target) {
     if (descriptor.value !== undefined && typeof descriptor.value === "function") {
 
       examination.methods.push(value);
+
+      const isPrivateMethod = privateNameExp.exec(value);
+
+      if (isPrivateMethod) {
+        examination.privateMethods.push(value);
+      } else {
+        examination.publicMethods.push(value);
+      }
       continue;
     }
 
