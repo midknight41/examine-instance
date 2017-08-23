@@ -1,6 +1,6 @@
 {
   "name": "examine-instance",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Inspects an object and its prototype and catalogues the properties and methods.",
   "main": "./dist/lib/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "reflection"
   ],
   "author": "Chad Macey",
-   "contributors": [
+  "contributors": [
     "Chad Macey <chad_macey@hotmail.com>",
     "Jack MacDonald <jack.macdonald0@gmail.com>"
   ],
