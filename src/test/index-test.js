@@ -1,6 +1,6 @@
 // Testing Framework
-import * as Code from "code";
-import * as Lab from "lab";
+import * as Code from "@hapi/code";
+import * as Lab from "@hapi/lab";
 import getHelper from "lab-testing";
 
 import examine from "../lib/index";
@@ -74,7 +74,7 @@ class MyClass {
 
 group("The examine() function", () => {
 
-  lab.test("can detect a method on the instance of the object", done => {
+  lab.test("can detect a method on the instance of the object", () => {
 
     const obj = {
       method1: () => { return; },
@@ -88,11 +88,10 @@ group("The examine() function", () => {
     expect(result.methods).to.have.length(3);
     expect(result.methods).to.contain(["method1", "method2_", "_method3"]);
 
-    return done();
 
   });
 
-  lab.test("can detect a private method on the instance of the object", done => {
+  lab.test("can detect a private method on the instance of the object", () => {
 
     const obj = {
       method1_: () => { return; },
@@ -105,11 +104,10 @@ group("The examine() function", () => {
     expect(result.privateMethods).to.have.length(2);
     expect(result.privateMethods).to.contain(["method1_", "_method2"]);
 
-    return done();
 
   });
 
-  lab.test("can detect a public method on the instance of the object", done => {
+  lab.test("can detect a public method on the instance of the object", () => {
 
     const obj = {
       method1: () => { return; },
@@ -122,11 +120,10 @@ group("The examine() function", () => {
     expect(result.publicMethods).to.have.length(2);
     expect(result.publicMethods).to.contain(["method1", "method2"]);
 
-    return done();
 
   });
 
-  lab.test("can detect a variable on the instance of the object", done => {
+  lab.test("can detect a variable on the instance of the object", () => {
 
     const obj = {
       att1: "a",
@@ -139,12 +136,9 @@ group("The examine() function", () => {
     expect(result).to.be.an.object();
     expect(result.attributes).to.have.length(3);
     expect(result.attributes).to.contain(["att1", "att2", "att3"]);
-
-    return done();
-
   });
 
-  lab.test("can detect a method on the prototype of the object", done => {
+  lab.test("can detect a method on the prototype of the object", () => {
 
     const Class = (function () {
       function MyClass() {
@@ -165,12 +159,9 @@ group("The examine() function", () => {
     expect(result).to.be.an.object();
     expect(result.methods).to.have.length(3);
     expect(result.methods).to.contain(["method1", "method2", "method3"]);
-
-    return done();
-
   });
 
-  lab.test("can detect a private method on the instance of the class", done => {
+  lab.test("can detect a private method on the instance of the class", () => {
 
     const obj = new MyClass();
 
@@ -179,12 +170,9 @@ group("The examine() function", () => {
     expect(result).to.be.an.object();
     expect(result.privateMethods).to.have.length(1);
     expect(result.privateMethods).to.contain(["method2_"]);
-
-    return done();
-
   });
 
-  lab.test("can detect a public method on the instance of the class", done => {
+  lab.test("can detect a public method on the instance of the class", () => {
 
     const obj = new MyClass();
 
@@ -193,12 +181,9 @@ group("The examine() function", () => {
     expect(result).to.be.an.object();
     expect(result.publicMethods).to.have.length(1);
     expect(result.publicMethods).to.contain(["method1"]);
-
-    return done();
-
   });
 
-  lab.test("can detect a raw attribute on the prototype of the object", done => {
+  lab.test("can detect a raw attribute on the prototype of the object", () => {
 
     const Class = (function () {
       function MyClass() {
@@ -219,12 +204,9 @@ group("The examine() function", () => {
     expect(result).to.be.an.object();
     expect(result.attributes).to.have.length(3);
     expect(result.attributes).to.contain(["att1", "att2", "att3"]);
-
-    return done();
-
   });
 
-  lab.test("can detect a R/W property on a class", done => {
+  lab.test("can detect a R/W property on a class", () => {
 
     const obj = new RW();
 
@@ -233,12 +215,9 @@ group("The examine() function", () => {
     expect(result).to.be.an.object();
     expect(result.readWrite).to.have.length(3);
     expect(result.readWrite).to.contain(["prop1", "prop2", "prop3"]);
-
-    return done();
-
   });
 
-  lab.test("can detect public variables on a class", done => {
+  lab.test("can detect public variables on a class", () => {
 
     const obj = new Public();
 
@@ -247,13 +226,10 @@ group("The examine() function", () => {
     expect(result).to.be.an.object();
     expect(result.attributes).to.have.length(3);
     expect(result.attributes).to.contain(["prop1", "prop2", "prop3"]);
-
-    return done();
-
   });
 
 
-  lab.test("can detect a R/O property on a class", done => {
+  lab.test("can detect a R/O property on a class", () => {
 
     const obj = new RO();
 
@@ -262,12 +238,9 @@ group("The examine() function", () => {
     expect(result).to.be.an.object();
     expect(result.readOnly).to.have.length(3);
     expect(result.readOnly).to.contain(["prop1", "prop2", "prop3"]);
-
-    return done();
-
   });
 
-  lab.test("can detect a W/O property on a class", done => {
+  lab.test("can detect a W/O property on a class", () => {
 
     const obj = new WO();
 
@@ -276,20 +249,15 @@ group("The examine() function", () => {
     expect(result).to.be.an.object();
     expect(result.writeOnly).to.have.length(3);
     expect(result.writeOnly).to.contain(["prop1", "prop2", "prop3"]);
-
-    return done();
-
   });
 
-  lab.test("can run the example", done => {
+  lab.test("can run the example", () => {
 
     const obj = new MyClass();
 
     const result = examine(obj);
 
     expect(result).to.be.an.object();
-    return done();
-
   });
 
 });
