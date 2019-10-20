@@ -38,13 +38,13 @@
   "homepage": "https://github.com/midknight41/examine-instance#readme",
   "devDependencies": {
     "babel-cli": "^6.22.2",
-    "babel-eslint": "^8.0.0",
+    "babel-eslint": "^9.0.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
     "babel-plugin-transform-es2015-parameters": "^6.22.0",
     "babel-plugin-transform-es2015-spread": "^6.22.0",
     "babel-preset-env": "^1.1.8",
     "code": "^4.0.0",
-    "eslint": "^4.1.0",
+    "eslint": "^5.0.0",
     "lab": "^14.1.1",
     "lab-testing": "^2.1.0",
     "rimraf": "^2.5.4"
